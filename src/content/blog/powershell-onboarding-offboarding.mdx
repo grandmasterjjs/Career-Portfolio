@@ -1,0 +1,70 @@
+---
+title: "Building an Idempotent PowerShell Onboarding/Offboarding Pipeline"
+description: "How I turned a manual, error-prone account lifecycle checklist into a repeatable PowerShell suite for a 3-person team supporting 1,500 users."
+date: "2025-02-11"
+tags: ["PowerShell", "Automation", "Active Directory", "Microsoft 365"]
+readingTime: "7 min read"
+---
+
+If you support 1,500 users with three people, account lifecycle management can quietly become a part-time job by itself. New hires, terminations, department transfers, license changes — every one of them used to mean a checklist and a set of manual clicks across Active Directory, Exchange Online, and the M365 admin center.
+
+This is the write-up of the automation suite that replaced that checklist.
+
+## The problem, specifically
+
+Manual account provisioning had three failure modes I kept seeing:
+
+1. **Inconsistency.** Two different technicians rarely built an account exactly the same way — group memberships, OU placement, and license assignment all drifted depending on who did the work.
+2. **Slow offboarding.** Termination tickets sat in queue behind "urgent" break-fix work, which is a security problem as much as an efficiency one.
+3. **No audit trail.** When something *did* go wrong, there was no clean record of what changed, when, or why.
+
+## Design goals
+
+Before writing a line of PowerShell, I set a few non-negotiables:
+
+- **Idempotent.** Every script had to be safe to run twice. If a script died halfway through, re-running it shouldn't create duplicate group memberships or double-provision a mailbox.
+- **Dry-run first.** Every script that touches bulk accounts supports a `-WhatIf`-style preview mode before it's allowed to make changes.
+- **Logged everything.** Every run writes a structured log — who ran it, what changed, and the before/after state for anything mutated.
+
+## What the suite actually does
+
+At a high level, the pipeline looks like this:
+
+```powershell
+# Simplified onboarding flow
+Import-Module ActiveDirectory
+Import-Module Microsoft.Graph.Users
+
+function New-UserAccount {
+    param(
+        [Parameter(Mandatory)] [string]$SamAccountName,
+        [Parameter(Mandatory)] [string]$Department,
+        [switch]$WhatIf
+    )
+
+    $template = Get-ADUser -Filter "Department -eq '$Department'" -Properties MemberOf |
+        Select-Object -First 1
+
+    if ($WhatIf) {
+        Write-Output "[DRY RUN] Would create $SamAccountName based on $($template.SamAccountName)"
+        return
+    }
+
+    New-ADUser -SamAccountName $SamAccountName -Path $template.DistinguishedName -Enabled $true
+    $template.MemberOf | ForEach-Object { Add-ADGroupMember -Identity $_ -Members $SamAccountName }
+
+    Write-AuditLog -Action "ProvisionUser" -Target $SamAccountName -Source $template.SamAccountName
+}
+```
+
+The real version has more error handling, retries against Graph API throttling, and a proper audit-log writer — but the shape is the same: **template-based provisioning**, so a new account inherits the group memberships and access of a real, similar account instead of a hardcoded list someone forgot to update six months ago.
+
+Offboarding runs the same pattern in reverse: disable, strip group memberships (logged, not just deleted), convert the mailbox to shared, and reassign the license — all from a single ticket-driven trigger instead of a four-tab manual process.
+
+## The result
+
+This suite, along with matching automation for AD reporting and license reconciliation, is a big part of why a 3-person team can maintain 90%+ SLA compliance while running below designed headcount. It's not glamorous work, but it's the kind of automation that pays for itself in the first week and keeps paying every week after.
+
+## What I'd do differently
+
+If I rebuilt this today, I'd move the audit log out of flat files and into a lightweight database from day one — it works, but querying "show me every offboarding in the last quarter" is more painful than it needs to be. That's on the roadmap.
