@@ -38,7 +38,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="mt-6 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink-900 dark:text-paper-100 sm:text-5xl lg:text-6xl"
           >
-            Hi, I&apos;m {profile.shortName.split(" ")[0]}. I build{" "}
+            Hi, I&apos;m {profile.shortName.split(" ")[0]} I build{" "}
             <span className="text-gradient">support systems that run themselves.</span>
           </motion.h1>
 
