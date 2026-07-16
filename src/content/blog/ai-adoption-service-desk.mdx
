@@ -1,0 +1,41 @@
+---
+title: "Rolling Out Enterprise AI on a Service Desk (Without the Hype)"
+description: "Notes from training a 3-person Service Desk team on Claude Enterprise — what actually moved the needle and what was noise."
+date: "2025-08-04"
+tags: ["AI", "Leadership", "Documentation"]
+readingTime: "6 min read"
+---
+
+Every vendor conversation in the last two years has included some version of "you should be using AI." Fair enough. But availability isn't adoption, and a tool sitting unused in a team's toolbar doesn't move a single metric.
+
+Here's what actually happened when I rolled Claude Enterprise into daily Service Desk operations.
+
+## Start with the workflow, not the tool
+
+The mistake I see most often is leading with "here's a chatbot, go explore." That produces a week of novelty and then silence. Instead, I picked three concrete workflows where the team already had pain:
+
+- **Ticket summarization** — turning a long, messy thread into a clean summary for handoff or escalation.
+- **Documentation drafting** — turning a resolved ticket into a first-draft knowledge base article.
+- **Troubleshooting scaffolding** — using AI to structure a diagnostic approach for an unfamiliar error, not to guess the answer outright.
+
+Each of these had a *before* the team could feel, which made the *after* easy to sell.
+
+## Prompting is a coachable skill
+
+I treated prompt patterns the same way I'd treat a KACE or ServiceNow macro — a reusable template, not a one-off. A few examples that stuck:
+
+> "Summarize this ticket thread for a Tier 2 handoff. Include: what the user reported, what's been tried, current status, and what's needed next. Keep it under 150 words."
+
+> "Draft a KB article from this resolved ticket. Audience is a Tier 1 technician who's never seen this issue. Include symptoms, root cause, and step-by-step resolution."
+
+Once technicians had two or three of these memorized, usage stopped being a novelty and started being a habit.
+
+## What actually moved
+
+- **Documentation quality** improved almost immediately — drafts went from "eventually maybe" to "written the same day as resolution."
+- **Resolution speed** improved more gradually, as the troubleshooting-scaffolding habit took hold.
+- **Customer satisfaction** climbed alongside individual throughput as technicians spent less time on writing and more time on the actual problem.
+
+## What I'd tell someone starting this today
+
+Don't lead with the tool. Lead with the three most annoying, recurring pieces of friction on your team, and go looking for where AI-assisted workflows genuinely remove that friction — not just where it's possible to use them. The chatbot prototype I built for first-line ticket deflection came directly out of this same principle, just aimed at end users instead of technicians.
