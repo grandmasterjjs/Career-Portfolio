@@ -1,0 +1,41 @@
+---
+title: "VLAN Segmentation at Home: What a UDM Pro Max Taught Me About Enterprise Networking"
+description: "Six VLANs, a Tailscale overlay, and a reverse proxy later — lessons from building real network segmentation in a homelab."
+date: "2026-03-22"
+tags: ["Networking", "Homelab", "Linux"]
+readingTime: "8 min read"
+---
+
+I didn't segment my home network because I needed to. I did it because I wanted to understand, at a hands-on level, the same decisions I'd expect an enterprise network team to make — and because breaking things at home is a lot cheaper than breaking things at work.
+
+## The layout
+
+My UniFi Dream Machine Pro Max runs six VLANs:
+
+| VLAN | CIDR | Purpose |
+|---|---|---|
+| Wabash | 192.168.0.0/24 | Primary trusted network |
+| Printers | 192.168.2.0/24 | Isolated print traffic |
+| IoT | 192.168.3.0/24 | Untrusted smart-home devices |
+| Gaming | 192.168.5.0/24 | Console/gaming traffic, isolated from admin systems |
+| Active Directory | 192.168.30.0/24 | Domain services |
+| DMZ | 192.168.50.0/24 | Anything exposed outward |
+
+The goal isn't paranoia — it's blast radius. If a cheap IoT device gets compromised, it has no path to my AD VLAN. That's the same reasoning behind conditional access policies at work: least privilege by default, not by exception.
+
+## Overlay networking with Tailscale
+
+VLANs handle segmentation *inside* the network. Tailscale handles secure access *into* it. I run a full-mesh tailnet, but — deliberately — not every VLAN is routed:
+
+- **Routed:** Wabash, Printers, Active Directory
+- **Excluded:** IoT, Gaming, DMZ
+
+That split matters. Remote access to my trusted systems shouldn't imply remote access to a smart plug or a DMZ host. Subnet routers (two standalone Proxmox hosts, `helios` and `aegis`) advertise the home routes; a separate node is scoped to advertise only routes for outside work, kept deliberately apart from home traffic.
+
+## Clean hostnames without exposing raw IPs
+
+The other piece worth mentioning is the reverse proxy pattern. A dedicated host runs Nginx Proxy Manager, paired with Cloudflare DNS, so every internal service gets a clean external hostname — `service.mydomain.com` — instead of a raw IP or a `:8080` port hanging off a bookmark. Cloudflare handles the DNS wildcard; the proxy host handles routing each hostname to the right internal target.
+
+## What I'd tell someone starting this
+
+Start with the VLAN boundaries you actually care about — trusted vs. untrusted vs. exposed — before you get precise about six-plus subnets. The segmentation only pays off if you can clearly answer "what happens if *this* VLAN gets compromised" for every VLAN you create. If the answer is "nothing changes," you probably don't need the extra subnet yet.
