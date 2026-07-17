@@ -47,7 +47,7 @@ export default function AboutPage() {
               I got into technology the unglamorous way: answering phones. In 1996 I was supervising an
               8-person phone-support team at WinBook Computer Corporation, troubleshooting hardware and
               software issues with a customer on the line and no remote tools to see what they were seeing.
-              You learn to ask good questions fast, or you don&apos;t last.
+              You learn to ask the most revealing questions first.
             </p>
             <p>
               Almost thirty years later, I&apos;m still doing the same core job — helping people who are
@@ -57,12 +57,8 @@ export default function AboutPage() {
               need a human brain.
             </p>
             <p>
-              What motivates me is watching a lean team outperform its headcount. At W.W. Williams, three of
-              us support roughly 1,500 people — that only works because I obsess over process redesign,
-              automation, and documentation instead of just asking people to work harder. I built a PowerShell
-              automation suite because manual Active Directory and license admin was eating hours we didn&apos;t
-              have. I built ticket trend analysis because &quot;we keep seeing this issue&quot; isn&apos;t a plan, it&apos;s a
-              feeling — and feelings don&apos;t fix root causes. Data does.
+              What motivates me is watching a lean team outperform its headcount. At W.W. Williams, a team of three supported roughly 1,500 people — that only works because I obsessed over process redesign,
+              automation, documentation, and elevating team members instead of just asking people to work harder. I built a PowerShell automation suite because manual Active Directory and license admin was eating hours we didn&apos;t have. I built ticket trend analysis because &quot;we keep seeing this issue&quot; doesn&apos;t really fly with upper management.
             </p>
             <p>
               I&apos;m genuinely energized by new technology, especially when it&apos;s early enough that most teams
