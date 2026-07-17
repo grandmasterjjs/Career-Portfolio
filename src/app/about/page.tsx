@@ -40,7 +40,7 @@ export default function AboutPage() {
   return (
     <>
       <Section className="pb-10">
-        <SectionHeading as="h1" eyebrow="About" title="The story behind the systems" />
+        <SectionHeading as="h1" eyebrow="About" title="The origin story" />
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
           <Reveal className="space-y-5 text-base leading-relaxed text-ink-600 dark:text-ink-300">
             <p>
