@@ -3,7 +3,7 @@ export const profile = {
   shortName: "J.J. Smiley",
   headline: "IT Operations & Management Leader",
   tagline:
-    "25+ years turning overloaded service desks into systems that run themselves — through process redesign, PowerShell practical AI adoption, and empowering teams to do their best work.",
+    "25+ years turning overloaded service desks into systems that run themselves — through process redesign, PowerShell, practical AI adoption, and empowering teams to do their best work.",
   location: "Columbus, OH",
   email: "jj@grandmasterj.com",
   linkedin: "https://www.linkedin.com/in/jjsmiley",
