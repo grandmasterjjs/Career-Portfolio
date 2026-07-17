@@ -44,7 +44,7 @@ export function NetworkDiagram() {
         {/* Reverse proxy + Cloudflare row */}
         <g transform="translate(120, 340)">
           <rect width="230" height="60" rx="10" fill="#2DD4BF" fillOpacity="0.1" stroke="#2DD4BF" />
-          <text x="115" y="24" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.7">Reverse Proxy (Wabash VLAN)</text>
+          <text x="115" y="24" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.7">Reverse Proxy (Trusted VLAN)</text>
           <text x="115" y="42" textAnchor="middle" fontSize="12" fontWeight="600" fill="currentColor">Nginx Proxy Manager</text>
         </g>
         <line x1="80" y1="294" x2="235" y2="340" stroke="currentColor" strokeOpacity="0.25" />
@@ -52,7 +52,7 @@ export function NetworkDiagram() {
         <g transform="translate(400, 340)">
           <rect width="230" height="60" rx="10" fill="none" stroke="currentColor" strokeOpacity="0.35" />
           <text x="115" y="24" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.7">DNS</text>
-          <text x="115" y="42" textAnchor="middle" fontSize="12" fontWeight="600" fill="currentColor">Cloudflare (*.grandmasterj.com)</text>
+          <text x="115" y="42" textAnchor="middle" fontSize="12" fontWeight="600" fill="currentColor">External DNS (*.example-lab.test)</text>
         </g>
         <line x1="350" y1="370" x2="400" y2="370" stroke="currentColor" strokeOpacity="0.25" />
 
@@ -66,7 +66,7 @@ export function NetworkDiagram() {
         <line x1="515" y1="294" x2="795" y2="340" stroke="currentColor" strokeOpacity="0.15" strokeDasharray="4 4" />
       </svg>
       <p className="mt-4 font-mono text-xs text-ink-400 dark:text-ink-500">
-        Solid lines = routed traffic. Dashed lines = Tailscale-routed VLANs only (Wabash, Printers, Active Directory — IoT, Gaming, and DMZ stay excluded).
+        Solid lines = routed traffic. Dashed lines = Tailscale-routed VLANs only (Trusted, Print, Directory Services — IoT, Gaming, and DMZ stay excluded).
       </p>
     </div>
   );

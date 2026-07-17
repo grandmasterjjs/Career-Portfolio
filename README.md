@@ -38,7 +38,7 @@ The hero section (`src/components/home/Hero.tsx`) currently renders a styled SVG
 
 ## A note on the Homelab page content
 
-The Homelab page publishes real details from your infrastructure wiki — VLAN ranges, hostnames, your Tailscale tailnet name, and your reverse-proxy pattern. This is common and often a *feature* for homelab content (it shows real skill), but it is genuinely more network detail than most public résumé sites expose. Worth a deliberate decision before this goes fully public: keep it as-is, generalize the specifics (e.g. "six segmented VLANs" instead of exact CIDRs and the live tailnet name), or gate it behind a "details on request" note. Easy to adjust in `src/data/homelab.ts` either way.
+The Homelab page uses sanitized example VLAN ranges, hostnames, tailnet names, and reverse-proxy labels. The goal is to show the architecture and decision-making without publishing real network coordinates or internal system names.
 
 ## Local development
 

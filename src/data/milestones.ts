@@ -63,8 +63,8 @@ export const milestones: Milestone[] = [
   },
   {
     year: "2026",
-    title: "GrandMasterJ.com homelab — meet Zap",
-    body: "Stood up a full home infrastructure stack — Proxmox, UniFi, Tailscale, Netdata — and brought the same AI-adoption philosophy home by deploying Zap, a personal AI ops assistant, to help run and document it.",
+    title: "GrandMasterJ.com homelab — AI ops at home",
+    body: "Stood up a full home infrastructure stack — Proxmox, UniFi, Tailscale, Netdata — and brought the same AI-adoption philosophy home by deploying a personal AI ops assistant to help run and document it.",
     kind: "personal",
   },
 ];

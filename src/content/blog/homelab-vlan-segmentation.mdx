@@ -1,5 +1,5 @@
 ---
-title: "VLAN Segmentation at Home: What a UDM Pro Max Taught Me About Enterprise Networking"
+title: "VLAN Segmentation at Home: What a UniFi Gateway Taught Me About Enterprise Networking"
 description: "Six VLANs, a Tailscale overlay, and a reverse proxy later — lessons from building real network segmentation in a homelab."
 date: "2026-03-22"
 tags: ["Networking", "Homelab", "Linux"]
@@ -10,31 +10,31 @@ I didn't segment my home network because I needed to. I did it because I wanted 
 
 ## The layout
 
-My UniFi Dream Machine Pro Max runs six VLANs:
+My UniFi gateway runs six VLANs. The example ranges below are sanitized, but they reflect the shape of the design:
 
 | VLAN | CIDR | Purpose |
 |---|---|---|
-| Wabash | 192.168.0.0/24 | Primary trusted network |
-| Printers | 192.168.2.0/24 | Isolated print traffic |
-| IoT | 192.168.3.0/24 | Untrusted smart-home devices |
-| Gaming | 192.168.5.0/24 | Console/gaming traffic, isolated from admin systems |
-| Active Directory | 192.168.30.0/24 | Domain services |
-| DMZ | 192.168.50.0/24 | Anything exposed outward |
+| Trusted | 10.240.10.0/24 | Primary trusted network |
+| Print | 10.240.20.0/24 | Isolated print traffic |
+| IoT | 10.240.30.0/24 | Untrusted smart-home devices |
+| Media/Gaming | 10.240.40.0/24 | Console/gaming traffic, isolated from admin systems |
+| Directory Services | 10.240.50.0/24 | Domain services |
+| DMZ | 10.240.90.0/24 | Anything exposed outward |
 
-The goal isn't paranoia — it's blast radius. If a cheap IoT device gets compromised, it has no path to my AD VLAN. That's the same reasoning behind conditional access policies at work: least privilege by default, not by exception.
+The goal isn't paranoia — it's blast radius. If a cheap IoT device gets compromised, it has no path to my directory-services VLAN. That's the same reasoning behind conditional access policies at work: least privilege by default, not by exception.
 
 ## Overlay networking with Tailscale
 
 VLANs handle segmentation *inside* the network. Tailscale handles secure access *into* it. I run a full-mesh tailnet, but — deliberately — not every VLAN is routed:
 
-- **Routed:** Wabash, Printers, Active Directory
+- **Routed:** Trusted, Print, Directory Services
 - **Excluded:** IoT, Gaming, DMZ
 
-That split matters. Remote access to my trusted systems shouldn't imply remote access to a smart plug or a DMZ host. Subnet routers (two standalone Proxmox hosts, `helios` and `aegis`) advertise the home routes; a separate node is scoped to advertise only routes for outside work, kept deliberately apart from home traffic.
+That split matters. Remote access to my trusted systems shouldn't imply remote access to a smart plug or a DMZ host. Subnet routers (two standalone virtualization hosts, `lab-node-a` and `lab-node-b`) advertise the home routes; a separate node is scoped to advertise only routes for outside work, kept deliberately apart from home traffic.
 
 ## Clean hostnames without exposing raw IPs
 
-The other piece worth mentioning is the reverse proxy pattern. A dedicated host runs Nginx Proxy Manager, paired with Cloudflare DNS, so every internal service gets a clean external hostname — `service.mydomain.com` — instead of a raw IP or a `:8080` port hanging off a bookmark. Cloudflare handles the DNS wildcard; the proxy host handles routing each hostname to the right internal target.
+The other piece worth mentioning is the reverse proxy pattern. A dedicated host runs Nginx Proxy Manager, paired with external DNS, so every internal service gets a clean example hostname — `service.example-lab.test` — instead of a raw IP or a `:8080` port hanging off a bookmark. DNS handles the wildcard; the proxy host handles routing each hostname to the right internal target.
 
 ## What I'd tell someone starting this
 

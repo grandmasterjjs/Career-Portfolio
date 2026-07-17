@@ -32,7 +32,7 @@ const values = [
   {
     icon: Brain,
     title: "New tools get tested at home first",
-    body: "I don't wait for a vendor whitepaper to tell me if something's useful. My homelab — and my personal AI assistant, Zap — is where I stress-test ideas like AI-assisted ops before I bring them to work.",
+    body: "I don't wait for a vendor whitepaper to tell me if something's useful. My homelab and personal AI ops assistant are where I stress-test ideas like AI-assisted ops before I bring them to work.",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
               haven&apos;t figured out how to use it well yet. That&apos;s where I try to be useful — not just adopting
               a tool, but figuring out the training and workflow changes that make it actually stick. I did
               that with enterprise AI tools at work, and I do the same thing at home, where my personal
-              homelab (and my own AI ops assistant, Zap) is a permanent testbed for &quot;does this actually save
+              homelab and my own AI ops assistant are a permanent testbed for &quot;does this actually save
               time, or is it just interesting?&quot;
             </p>
           </Reveal>
@@ -97,7 +97,7 @@ export default function AboutPage() {
                 <li>🕰️ 25+ years in IT, all of it in support &amp; operations leadership</li>
                 <li>🧰 PowerShell, Bash, and increasingly Python</li>
                 <li>🏠 Runs a full Proxmox / UniFi / Tailscale homelab, on-call for exactly no one but himself</li>
-                <li>🤖 Built and deployed a personal AI ops assistant (Zap, on Vellum)</li>
+                <li>🤖 Built and deployed a personal AI ops assistant</li>
               </ul>
             </div>
           </Reveal>
