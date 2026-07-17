@@ -13,7 +13,7 @@ export function FeaturedProjects() {
         <SectionHeading
           eyebrow="Selected Work"
           title="Automation that gave time back to real teams"
-          description="A few of the projects behind the numbers — problem, solution, and what I'd do differently next time."
+          description="A few of the projects behind the numbers — problem, solution, and what I learned."
         />
         <Button href="/projects" variant="ghost" icon={<ArrowRight size={16} />} className="hidden sm:inline-flex">
           All projects

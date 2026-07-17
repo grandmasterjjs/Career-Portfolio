@@ -16,7 +16,7 @@ export default function BlogPage() {
         as="h1"
         eyebrow="Notes & Writing"
         title="Field notes from the desk and the homelab"
-        description="Tutorials, troubleshooting guides, and the occasional 'here's what I'd do differently.'"
+        description="Tutorials, troubleshooting guides, and the occasional 'here's what I learned.'"
       />
       <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
