@@ -8,16 +8,16 @@ export function NetworkDiagram() {
       <svg viewBox="0 0 960 460" className="min-w-[720px] w-full text-ink-700 dark:text-ink-200" fontFamily="var(--font-mono)" aria-hidden="true" role="presentation">
         {/* WAN sources */}
         {homelab.network.wan.map((wan, i) => (
-          <g key={wan.label} transform={`translate(${40 + i * 210}, 20)`}>
-            <rect width="190" height="50" rx="10" fill="none" stroke="currentColor" strokeOpacity="0.35" />
-            <text x="95" y="21" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.6">{wan.label}</text>
-            <text x="95" y="38" textAnchor="middle" fontSize="12" fill="currentColor" fontWeight="600">{wan.value}</text>
+          <g key={wan.label} transform={`translate(${20 + i * 320}, 20)`}>
+            <rect width="280" height="50" rx="10" fill="none" stroke="currentColor" strokeOpacity="0.35" />
+            <text x="140" y="21" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.6">{wan.label}</text>
+            <text x="140" y="38" textAnchor="middle" fontSize="12" fill="currentColor" fontWeight="600">{wan.value}</text>
           </g>
         ))}
 
         {/* Lines WAN -> Gateway */}
         {homelab.network.wan.map((_, i) => (
-          <line key={i} x1={135 + i * 210} y1="70" x2="480" y2="120" stroke="currentColor" strokeOpacity="0.25" />
+          <line key={i} x1={160 + i * 320} y1="70" x2="480" y2="120" stroke="currentColor" strokeOpacity="0.25" />
         ))}
 
         {/* Gateway */}
