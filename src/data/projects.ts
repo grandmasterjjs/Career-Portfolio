@@ -7,8 +7,6 @@ export type ProjectTag =
   | "Azure"
   | "ServiceNow"
   | "Automation"
-  | "Networking"
-  | "Linux"
   | "Homelab"
   | "AI"
   | "Unix";
@@ -173,8 +171,6 @@ export const allTags: ProjectTag[] = [
   "Azure",
   "ServiceNow",
   "Automation",
-  "Networking",
-  "Linux",
   "Homelab",
   "AI",
   "Unix"
