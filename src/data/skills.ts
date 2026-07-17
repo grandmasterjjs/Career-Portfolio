@@ -3,6 +3,17 @@ export type SkillCategory = { id: string; title: string; blurb: string; skills: 
 
 export const skillCategories: SkillCategory[] = [
   {
+    id: "leadership",
+    title: "Leadership",
+    blurb: "Building technicians into teams that outperform their staffing numbers.",
+    skills: [
+      { name: "Team Development & Coaching", level: 92 },
+      { name: "Vendor & Stakeholder Management", level: 88 },
+      { name: "Process Redesign", level: 90 },
+      { name: "Project Management (migrations, rollouts)", level: 85 },
+    ],
+  },
+  {
     id: "sysadmin",
     title: "Systems Administration",
     blurb: "25 years of keeping mixed fleets patched, imaged, and out of the way of the people using them.",
@@ -56,17 +67,6 @@ export const skillCategories: SkillCategory[] = [
       { name: "Reverse Proxy / DNS (Nginx Proxy Manager, Cloudflare)", level: 75 },
       { name: "Tailscale / Overlay Networking", level: 80 },
       { name: "VoIP & Telecom Vendor Management", level: 82 },
-    ],
-  },
-  {
-    id: "leadership",
-    title: "Leadership",
-    blurb: "Building technicians into teams that outperform their staffing numbers.",
-    skills: [
-      { name: "Team Development & Coaching", level: 92 },
-      { name: "Vendor & Stakeholder Management", level: 88 },
-      { name: "Process Redesign", level: 90 },
-      { name: "Project Management (migrations, rollouts)", level: 85 },
     ],
   },
   {

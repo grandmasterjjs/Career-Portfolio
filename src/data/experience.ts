@@ -22,18 +22,18 @@ export const experience: ExperienceEntry[] = [
     end: "Present",
     duration: "3+ yrs",
     summary:
-      "Running a lean 3-person Service Desk for ~1,500 associates nationwide — and using automation and AI adoption to close the gap left by running below designed team capacity.",
+      "Ran a lean 3-person Service Desk for ~1,500 associates nationwide — and using automation and AI adoption to close the gap left by running below designed team capacity.",
     bullets: [
-      "Manage a 3-person Service Desk supporting ~1,500 users across multiple locations nationwide.",
-      "Administer the Microsoft 365 tenant for ~1,500 users, including Exchange Online, Teams, SharePoint Online, and Intune endpoint management.",
-      "Own Entra ID (Azure AD) identity and access governance — user provisioning, conditional access policies, role-based access control, and hybrid identity via Entra ID Connect.",
+      "Managed a 3-person Service Desk supporting ~1,500 users across multiple locations nationwide.",
+      "Mentored technicians to a 40% improvement in individual ticket throughput and a 50% increase in customer satisfaction.",
+      "Administered the Microsoft 365 tenant for ~1,500 users, including Exchange Online, Teams, SharePoint Online, and Intune endpoint management.",
+      "Owned Entra ID (Azure AD) identity and access governance — user provisioning, conditional access policies, role-based access control, and hybrid identity via Entra ID Connect.",
       "Maintained 90%+ SLA compliance across P1–P3 categories while operating at roughly 75% of designed team capacity.",
       "Cut average MTTR by ~20% over 12 months (from ~16 hours to ~12 hours).",
       "Reduced repeat incidents by 15–20% through structured ticket trend analysis and targeted automation.",
       "Architected a PowerShell automation suite covering Active Directory reporting, bulk user account lifecycle management, and Microsoft 365 license provisioning.",
       "Built and deployed an AI-assisted support chatbot prototype using historical ticket data, knowledge base content, and pattern analysis.",
       "Trained the Service Desk team on enterprise AI tools (Claude Enterprise, code assistants) for troubleshooting, documentation, and ticket summarization.",
-      "Mentored technicians to a 40% improvement in individual ticket throughput and a 50% increase in customer satisfaction.",
     ],
     metrics: [
       { label: "Users supported", value: "1,500+" },
@@ -42,8 +42,10 @@ export const experience: ExperienceEntry[] = [
       { label: "Repeat incidents", value: "-15–20%" },
       { label: "Team throughput", value: "+40%" },
       { label: "CSAT improvement", value: "+50%" },
+      { label: "Team Empowerment", value: "100%" },
     ],
     tech: [
+      "Leadership & Team Development",
       "Microsoft 365",
       "Entra ID",
       "Intune",
@@ -62,7 +64,7 @@ export const experience: ExperienceEntry[] = [
     end: "Nov 2022",
     duration: "3 yrs 11 mo",
     summary:
-      "Supervised a multi-state Service Desk team, rebuilding the knowledge base and escalation model to move the numbers that mattered.",
+      "Supervised a 4-person Service Desk team, rebuilding the knowledge base and escalation model to move the numbers that mattered.",
     bullets: [
       "Supervised a 4-member Service Desk team supporting 500 users across three states.",
       "Increased first-contact resolution by ~15% through structured coaching and improved escalation criteria.",
@@ -108,13 +110,13 @@ export const experience: ExperienceEntry[] = [
     end: "Apr 2018",
     duration: "9 yrs 5 mo",
     summary:
-      "Nearly a decade running IT support across Mac and Windows environments, and the project manager behind most of the company's major infrastructure migrations.",
+      "Nearly a decade running IT support across Mac and Windows environments, and the project manager behind many of the Service Desk's major infrastructure migrations.",
     bullets: [
       "Managed a 4-person IT support operation for 500 users across mixed Mac and Windows environments.",
       "Improved SLA attainment through process standardization and proactive incident management.",
       "Redesigned the device imaging process, saving ~1 hour per machine across ~350 annual deployments — recovering 350+ staff hours per year.",
       "Built automation tooling with Bash and PowerShell to streamline repetitive troubleshooting and cut manual technician workload.",
-      "Project-managed multiple enterprise initiatives: Exchange Online Protection migration, Office 2013 deployment, Windows 7-to-Enterprise laptop migration (75 devices), a Customer Contact Center web chat deployment, and VoIP server upgrades.",
+      "Led or assisted in project-management for multiple enterprise initiatives: Exchange Online Protection migration, Office 2013 deployment, Windows 7-to-Enterprise laptop migration (75 devices), a Customer Contact Center web chat deployment, and VoIP server upgrades.",
     ],
     metrics: [
       { label: "Users supported", value: "500" },
@@ -122,7 +124,7 @@ export const experience: ExperienceEntry[] = [
       { label: "Major migrations led", value: "5" },
       { label: "Tenure", value: "9.5 yrs" },
     ],
-    tech: ["Bash", "PowerShell", "Exchange", "VoIP", "macOS", "Windows", "Imaging"],
+    tech: ["Bash", "PowerShell", "Exchange", "VoIP", "macOS", "Windows", "Imaging", "Linux", "Unix", "Office 365"],
   },
   {
     id: "butler",
@@ -155,7 +157,7 @@ export const experience: ExperienceEntry[] = [
       "Conducted regular end-user training sessions.",
     ],
     metrics: [{ label: "Tenure", value: "8 yrs" }],
-    tech: ["Imaging", "SMS", "Enterprise Desktop Support"],
+    tech: ["Imaging", "SMS", "Enterprise Desktop Support", "Unix", "macOS"],
   },
   {
     id: "winbook",
@@ -174,7 +176,7 @@ export const experience: ExperienceEntry[] = [
       "Administered hardware and software evaluation projects.",
     ],
     metrics: [{ label: "Team led", value: "8" }],
-    tech: ["Phone Support", "Team Leadership", "Hardware Evaluation"],
+    tech: ["Phone Support", "Team Leadership", "Hardware Evaluation", "Windows", "Exchange"],
   },
 ];
 
@@ -191,7 +193,7 @@ export const education = [
   },
   {
     school: "The Ohio State University",
-    credential: "Bachelor's Coursework, Communications Technology/Technician",
+    credential: "Bachelor's Coursework, Communications",
     years: "1995 – 1996",
   },
 ];

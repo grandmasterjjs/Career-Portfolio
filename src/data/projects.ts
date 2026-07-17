@@ -10,7 +10,8 @@ export type ProjectTag =
   | "Networking"
   | "Linux"
   | "Homelab"
-  | "AI";
+  | "AI"
+  | "Unix";
 
 export type Project = {
   slug: string;
@@ -63,9 +64,9 @@ export const projects: Project[] = [
   {
     slug: "enterprise-ai-adoption",
     name: "Enterprise AI Adoption & Workforce Integration",
-    pitch: "Rolling Claude Enterprise into daily Service Desk work — and teaching a lean team how to actually use it.",
+    pitch: "Rolling Claude Enterprise into daily Service Desk work — and teaching a lean team how to get the best use out of it.",
     problem:
-      "The team needed to scale output without scaling headcount. Enterprise AI tools were available, but availability isn't adoption — most teams either ignore the tools or use them shallowly without training.",
+      "The team needed to scale output without scaling headcount. Enterprise AI tools were available, but availability doesn't mean adoption — most teams either ignore the tools or use them shallowly without training.",
     solution:
       "I spearheaded the integration of enterprise AI tools, including Claude, into daily Service Desk operations, then trained the team on effective prompting for troubleshooting, documentation drafting, and ticket summarization — turning a generic tool into a workflow.",
     benefits: [
@@ -76,7 +77,7 @@ export const projects: Project[] = [
     tech: ["Claude Enterprise", "Prompt engineering", "Training program design", "Documentation workflows"],
     tags: ["AI", "Automation"],
     lessons: [
-      "Tool rollout is a change-management problem before it's a technical one.",
+      "Tools alone don't solve problems — adoption and training are the multiplier.",
       "Prompting is a coachable skill — small, repeatable prompt patterns beat one-off cleverness.",
       "The biggest wins showed up in documentation quality first, ticket speed second.",
     ],
@@ -96,6 +97,7 @@ export const projects: Project[] = [
       "Dramatically reduced manual administrative overhead",
       "Freed the team to focus on complex technical issues instead of repetitive maintenance",
       "Reduced the chance of human error in bulk account operations",
+      "Saved real money using the tools we already had instead of buying new ones",
     ],
     tech: ["PowerShell", "Active Directory", "Microsoft Graph / M365", "Scheduled automation"],
     tags: ["PowerShell", "Automation", "Microsoft 365", "Azure"],
@@ -107,7 +109,7 @@ export const projects: Project[] = [
     ],
     lessons: [
       "Idempotent scripts save you from yourself — every script was built to be safely re-run.",
-      "Logging and dry-run modes aren't optional when a script touches bulk account changes.",
+      "Logging and dry-run modes are essential for trust and adoption — the team needs to see what the script will do before it does it.",
       "Small automations compound: reporting scripts fed the data that made the trend-analysis project possible.",
     ],
     metric: { label: "Manual overhead", value: "↓ significant" },
@@ -131,7 +133,7 @@ export const projects: Project[] = [
     tags: ["Automation", "ServiceNow"],
     lessons: [
       "80% of ticket pain usually comes from a short list of root causes — the hard part is proving it with data, not gut feel.",
-      "Trend analysis is only useful if it changes what the team fixes next sprint, not just what gets reported upward.",
+      "Trend analysis is only useful if it provides actionable insights, not just what gets reported upward.",
     ],
     metric: { label: "Repeat incidents", value: "-15–20%" },
     accent: "signal",
@@ -151,7 +153,7 @@ export const projects: Project[] = [
       "Standardized the build across a mixed Mac/Windows environment",
     ],
     tech: ["Bash", "PowerShell", "macOS imaging", "Windows imaging"],
-    tags: ["Bash", "PowerShell", "Apple", "Automation"],
+    tags: ["Bash", "PowerShell", "Apple", "Automation", "Unix"],
     lessons: [
       "Cross-platform automation (Mac + Windows) forced cleaner, more portable scripting habits.",
       "The best automation ROI is often the boring, high-frequency task nobody wants to own.",
@@ -175,4 +177,5 @@ export const allTags: ProjectTag[] = [
   "Linux",
   "Homelab",
   "AI",
+  "Unix"
 ];

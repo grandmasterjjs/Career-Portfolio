@@ -3,9 +3,9 @@ import type { Milestone } from "@/components/about/Timeline";
 export const milestones: Milestone[] = [
   {
     year: "1995",
-    title: "Started in Communications Technology",
+    title: "Started in Communications",
     place: "The Ohio State University",
-    body: "Began coursework in communications technology — the first formal step toward a career that didn't really exist yet as \"IT\" in most job postings.",
+    body: "Began coursework in communications — you know, the catch all field that says: I don't know what I want to do yet.",
     kind: "education",
   },
   {
@@ -19,7 +19,7 @@ export const milestones: Milestone[] = [
     year: "1999",
     title: "Desktop Analyst",
     place: "L Brands",
-    body: "Eight years supporting enterprise users in a large-scale retail environment — where I first started building repeatable imaging and deployment processes instead of doing each machine by hand.",
+    body: "Eight years supporting enterprise users in a large-scale retail environment — where I first started building repeatable imaging and deployment processes instead of doing each machine by hand. And where I got hands with Macs and Marketing teams. Macs = Fun. Marketing Teams = Demanding. Both = A great experience.",
     kind: "career",
   },
   {
@@ -39,7 +39,7 @@ export const milestones: Milestone[] = [
     year: "2019",
     title: "Help Desk Supervisor",
     place: "CASTO Management Services",
-    body: "Supervised a 3-state team and rebuilt the knowledge base from scratch, proving that documentation is itself a force multiplier for resolution speed.",
+    body: "Supervised a 4-person team and rebuilt the knowledge base from scratch, proving that documentation is itself a force multiplier for resolution speed. This is where I learned to love managing a team of people who are smarter than me, and to focus on enabling them to do their best work.",
     kind: "career",
   },
   {
@@ -50,21 +50,21 @@ export const milestones: Milestone[] = [
     kind: "career",
   },
   {
-    year: "2024",
-    title: "Built an AI-assisted support chatbot",
-    body: "Trained a chatbot prototype on real ticket history and knowledge base content to handle the questions that shouldn't need a human, freeing the team for the ones that do.",
-    kind: "career",
+    year: "2023",
+    title: "GrandMasterJ.com homelab — AI ops at home",
+    body: "Stood up a full home infrastructure stack — Proxmox, UniFi, Tailscale, Netdata — and later I brought the same AI-adoption philosophy home by deploying a personal AI ops assistant to help run and document it.",
+    kind: "personal",
   },
   {
     year: "2025",
-    title: "Led enterprise AI adoption",
-    body: "Rolled Claude Enterprise into daily Service Desk operations and trained the team on prompting for troubleshooting, documentation, and ticket summarization.",
+    title: "Supported enterprise AI adoption",
+    body: "Helped to roll Claude Enterprise into daily IT operations and trained my team on prompting for troubleshooting, documentation, and ticket summarization.",
     kind: "career",
   },
   {
     year: "2026",
-    title: "GrandMasterJ.com homelab — AI ops at home",
-    body: "Stood up a full home infrastructure stack — Proxmox, UniFi, Tailscale, Netdata — and brought the same AI-adoption philosophy home by deploying a personal AI ops assistant to help run and document it.",
-    kind: "personal",
+    title: "Built an AI-assisted support chatbot",
+    body: "Trained a chatbot prototype on real ticket history and knowledge base content to handle the questions that shouldn't need a human, freeing the team for the ones that do.",
+    kind: "career",
   },
 ];
