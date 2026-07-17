@@ -1,6 +1,6 @@
 export const homelab = {
   intro:
-    "My homelab uses a public-facing lab domain pattern in a live environment I use to learn, break, document, and rebuild things on purpose. It runs segmented networking, reverse proxying, monitoring, and an AI operations assistant.",
+    "My homelab is a working sandbox where I practice real infrastructure patterns without putting production systems at risk. I use it to test segmented networking, reverse proxying, monitoring, documentation, and AI-assisted operations.",
   philosophy: [
     "This homelab is built to be rebuilt.",
     "Memory is volatile. Markdown is durable.",
@@ -35,7 +35,7 @@ export const homelab = {
     { name: "backup-node", detail: "2TB ZFS mirror on NVME" },
   ],
   overlay: {
-    tailnet: "example-tailnet.ts.net",
+    tailnet: "mytailnet.ts.net",
     model: "Full mesh — ACL tags for organizational structure",
     subnetRouters: "both hypervisor nodes advertise home routes",
     aiNode: "A dedicated tailnet node runs an AI operations assistant, authenticated via its own SSH keypair — scoped access, not blanket trust",

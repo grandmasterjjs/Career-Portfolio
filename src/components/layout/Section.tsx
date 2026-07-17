@@ -37,7 +37,7 @@ export function SectionHeading({
   as = "h2",
 }: {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   align?: "left" | "center";
   as?: "h1" | "h2";

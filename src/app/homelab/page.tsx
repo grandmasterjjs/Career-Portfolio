@@ -18,8 +18,17 @@ export default function HomelabPage() {
     <>
       <Section className="pb-10 pt-16">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-          <SectionHeading as="h1"
-          eyebrow="Homelab" title="GrandMasterJ.com — infrastructure I run for fun" description={homelab.intro} />
+          <SectionHeading
+            as="h1"
+            eyebrow="Homelab"
+            title={
+              <>
+                GrandMasterJ.com — infrastructure
+                <br />I run for fun
+              </>
+            }
+            description={homelab.intro}
+          />
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-ink-200/70 dark:border-ink-700/70">
             <Image
               src="/images/photos/homelab-thinking.jpg"
@@ -44,7 +53,7 @@ export default function HomelabPage() {
 
       <Section className="bg-paper-200/40 dark:bg-ink-900/40">
         <h2 className="mb-6 font-display text-xl font-semibold text-ink-900 dark:text-paper-100">Compute</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {homelab.compute.map((c, i) => (
             <ServiceCard key={c.name} name={c.name} role={c.role} tags={c.tags} delay={i * 0.05} />
           ))}
@@ -57,12 +66,12 @@ export default function HomelabPage() {
             <h2 className="mb-4 flex items-center gap-2 font-display text-xl font-semibold text-ink-900 dark:text-paper-100">
               <Database size={18} className="text-ember-500" /> Storage
             </h2>
-            <div className="space-y-3">
+            <div className="grid auto-rows-fr gap-3">
               {homelab.storage.map((s) => (
-                <Reveal key={s.name}>
-                  <div className="rounded-xl border border-ink-200/70 dark:border-ink-700/70 bg-paper-100/60 dark:bg-ink-800/40 p-4">
-                    <div className="font-mono text-sm font-semibold text-ink-900 dark:text-paper-100">{s.name}</div>
-                    <div className="mt-1 text-sm text-ink-500 dark:text-ink-400">{s.detail}</div>
+                <Reveal key={s.name} className="h-full">
+                  <div className="flex h-full min-w-0 flex-col rounded-xl border border-ink-200/70 bg-paper-100/60 p-5 dark:border-ink-700/70 dark:bg-ink-800/40">
+                    <div className="break-words font-mono text-sm font-semibold text-ink-900 dark:text-paper-100">{s.name}</div>
+                    <div className="mt-2 break-words text-sm text-ink-500 dark:text-ink-400">{s.detail}</div>
                   </div>
                 </Reveal>
               ))}
@@ -74,11 +83,11 @@ export default function HomelabPage() {
               <Link2 size={18} className="text-signal-500" /> Overlay network
             </h2>
             <Reveal>
-              <div className="rounded-xl border border-ink-200/70 dark:border-ink-700/70 bg-paper-100/60 dark:bg-ink-800/40 p-4 space-y-2 text-sm text-ink-600 dark:text-ink-300">
-                <div><span className="font-mono text-ink-400 dark:text-ink-500">tailnet:</span> {homelab.overlay.tailnet}</div>
-                <div><span className="font-mono text-ink-400 dark:text-ink-500">model:</span> {homelab.overlay.model}</div>
-                <div>{homelab.overlay.subnetRouters}</div>
-                <div>{homelab.overlay.aiNode}</div>
+              <div className="min-w-0 space-y-2 rounded-xl border border-ink-200/70 bg-paper-100/60 p-5 text-sm text-ink-600 dark:border-ink-700/70 dark:bg-ink-800/40 dark:text-ink-300">
+                <div className="break-words"><span className="font-mono text-ink-400 dark:text-ink-500">tailnet:</span> {homelab.overlay.tailnet}</div>
+                <div className="break-words"><span className="font-mono text-ink-400 dark:text-ink-500">model:</span> {homelab.overlay.model}</div>
+                <div className="break-words">{homelab.overlay.subnetRouters}</div>
+                <div className="break-words">{homelab.overlay.aiNode}</div>
               </div>
             </Reveal>
           </div>
@@ -89,23 +98,23 @@ export default function HomelabPage() {
         <h2 className="mb-6 flex items-center gap-2 font-display text-xl font-semibold text-ink-900 dark:text-paper-100">
           <Activity size={18} className="text-ember-500" /> Monitoring
         </h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Reveal>
-            <div className="rounded-xl border border-ink-200/70 dark:border-ink-700/70 bg-paper-100/60 dark:bg-ink-800/40 p-4">
+        <div className="grid auto-rows-fr gap-4 sm:grid-cols-3">
+          <Reveal className="h-full">
+            <div className="flex h-full min-w-0 flex-col rounded-xl border border-ink-200/70 bg-paper-100/60 p-5 dark:border-ink-700/70 dark:bg-ink-800/40">
               <div className="font-mono text-xs uppercase tracking-widest text-ink-400 dark:text-ink-500">Platform</div>
-              <div className="mt-1 font-semibold text-ink-900 dark:text-paper-100">{homelab.monitoring.platform}</div>
+              <div className="mt-2 break-words font-semibold text-ink-900 dark:text-paper-100">{homelab.monitoring.platform}</div>
             </div>
           </Reveal>
-          <Reveal delay={0.05}>
-            <div className="rounded-xl border border-ink-200/70 dark:border-ink-700/70 bg-paper-100/60 dark:bg-ink-800/40 p-4">
+          <Reveal delay={0.05} className="h-full">
+            <div className="flex h-full min-w-0 flex-col rounded-xl border border-ink-200/70 bg-paper-100/60 p-5 dark:border-ink-700/70 dark:bg-ink-800/40">
               <div className="font-mono text-xs uppercase tracking-widest text-ink-400 dark:text-ink-500">Parent node</div>
-              <div className="mt-1 font-semibold text-ink-900 dark:text-paper-100">{homelab.monitoring.parent}</div>
+              <div className="mt-2 break-words font-semibold text-ink-900 dark:text-paper-100">{homelab.monitoring.parent}</div>
             </div>
           </Reveal>
-          <Reveal delay={0.1}>
-            <div className="rounded-xl border border-ink-200/70 dark:border-ink-700/70 bg-paper-100/60 dark:bg-ink-800/40 p-4">
+          <Reveal delay={0.1} className="h-full">
+            <div className="flex h-full min-w-0 flex-col rounded-xl border border-ink-200/70 bg-paper-100/60 p-5 dark:border-ink-700/70 dark:bg-ink-800/40">
               <div className="font-mono text-xs uppercase tracking-widest text-ink-400 dark:text-ink-500">Coverage</div>
-              <div className="mt-1 text-sm text-ink-600 dark:text-ink-300">{homelab.monitoring.coverage}</div>
+              <div className="mt-2 break-words text-sm text-ink-600 dark:text-ink-300">{homelab.monitoring.coverage}</div>
             </div>
           </Reveal>
         </div>
