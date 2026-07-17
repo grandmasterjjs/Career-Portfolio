@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${body.variable} ${display.variable} ${mono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <div className="relative flex min-h-screen flex-col bg-black">
+          <div className="relative flex min-h-screen flex-col bg-paper dark:bg-ink">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
