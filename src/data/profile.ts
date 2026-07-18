@@ -5,7 +5,7 @@ export const profile = {
   tagline:
     "25+ years turning overloaded service desks into systems that run themselves — through process redesign, PowerShell, practical AI adoption, and empowering teams to do their best work.",
   location: "Columbus, OH",
-  email: "jj@grandmasterj.com",
+  email: "info@GrandMasterJ.com",
   linkedin: "https://www.linkedin.com/in/jjsmiley",
   github: "https://github.com/grandmasterjjs",
   site: "https://career.grandmasterj.com",
