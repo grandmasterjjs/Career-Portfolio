@@ -103,7 +103,7 @@ export function ContactForm() {
       </button>
       {submitState === "sent" && (
         <p className="text-sm text-signal-700 dark:text-signal-400">
-          Message sent. I'll get it at the inbox behind this site.
+          Message sent. I&apos;ll get it at the inbox behind this site.
         </p>
       )}
       {submitState === "error" && (
