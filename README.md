@@ -11,7 +11,7 @@ A custom-built personal portfolio and interactive résumé for James "J.J." Smil
 - **Résumé** — expandable interactive career timeline + PDF download
 - **Skills** — categorized proficiency bars
 - **Homelab** — network diagram, compute/storage inventory, Tailscale overlay, monitoring, AI ops assistant callout
-- **Contact** — links + a client-side contact form (opens a pre-filled email — see "Wiring up the contact form" below)
+- **Contact** — links + a Resend-backed contact form
 
 Dark mode by default (toggle in the nav), fully responsive, all pages statically generated.
 
@@ -49,12 +49,15 @@ npm run dev
 
 Visit `http://localhost:3000`.
 
-## Wiring up the contact form
+## Contact form
 
-The contact form currently opens the visitor's email client with a pre-filled message (zero backend required, works anywhere). If you'd rather receive submissions directly:
+The contact form posts to `src/app/api/contact/route.ts` and sends mail through Resend. Configure these Vercel environment variables:
 
-- **Easiest:** swap in [Formspree](https://formspree.io) or [Resend](https://resend.com) — both have simple form-POST integrations, no server code needed.
-- **Full control:** add a Next.js Route Handler at `src/app/api/contact/route.ts` and point the form at it — this works natively once deployed to Vercel.
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | Resend API key used only by the server route |
+| `RESEND_FROM_EMAIL` | Verified sender, for example `J.J. Smiley <contact@grandmasterj.com>` |
+| `CONTACT_EMAIL_TO` | Destination inbox; defaults to `src/data/profile.ts` `profile.email` if omitted |
 
 ## Deploying to Vercel (recommended)
 
@@ -65,7 +68,7 @@ The contact form currently opens the visitor's email client with a pre-filled me
 
 ### Environment / config notes
 - Update `profile.site` in `src/data/profile.ts` to match your final production domain — it feeds the sitemap, robots.txt, and Open Graph metadata.
-- No environment variables are required for the base site.
+- The contact form requires `RESEND_API_KEY` and `RESEND_FROM_EMAIL` in Vercel.
 
 ## Deploying elsewhere
 
