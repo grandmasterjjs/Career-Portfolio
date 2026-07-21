@@ -21,8 +21,8 @@ const values = [
   },
   {
     icon: HeartHandshake,
-    title: "My job is to make my team look good",
-    body: "Every metric on this site — MTTR, CSAT, throughput — is a team result, not a solo one. My management philosophy is simple: remove friction, coach hard, and get out of the way.",
+    title: "My job is to support the team, not just the tech",
+    body: "Every metric on this site — MTTR, CSAT, throughput — is a team result, not a solo one. My role as a leader is to remove friction, coach with purpose, and challenge people to keep growing without ever leaving them to struggle alone.",
   },
   {
     icon: Compass,
@@ -44,10 +44,12 @@ export default function AboutPage() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
           <Reveal className="space-y-5 text-base leading-relaxed text-ink-600 dark:text-ink-300">
             <p>
-              I got into technology the unglamorous way: answering phones. In 1996 I was supervising an
-              8-person phone-support team at WinBook Computer Corporation, troubleshooting hardware and
-              software issues with a customer on the line and no remote tools to see what they were seeing.
-              You learn to ask the most revealing questions first.
+              I got into technology the unglamorous way: answering phones. In 1996 I was manning the phones on an
+              8-person phone-support team at WinBook Computer Corporation (a now defunct part of Micro Center),
+              troubleshooting hardware and software issues with a customer on the line and no remote tools
+              to see what they were seeing. You quickly learn how to ask effective questions. Later I was promoted
+              to my first supervisory role, where I learned it's not about giving orders, but about
+              enabling my team to succeed.
             </p>
             <p>
               Almost thirty years later, I&apos;m still doing the same core job — helping people who are
