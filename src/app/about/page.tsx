@@ -48,7 +48,7 @@ export default function AboutPage() {
               8-person phone-support team at WinBook Computer Corporation (a now defunct part of Micro Center),
               troubleshooting hardware and software issues with a customer on the line and no remote tools
               to see what they were seeing. You quickly learn how to ask effective questions. Later I was promoted
-              to my first supervisory role, where I learned it's not about giving orders, but about
+              to my first supervisory role, where I learned it&apos;s not about giving orders, but about
               enabling my team to succeed.
             </p>
             <p>
