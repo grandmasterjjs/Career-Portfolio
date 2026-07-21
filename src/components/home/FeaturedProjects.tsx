@@ -12,7 +12,7 @@ export function FeaturedProjects() {
       <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
         <SectionHeading
           eyebrow="Selected Work"
-          title="Automation that gave time back to real teams"
+          title="Automation that gave valuable time back to my teams"
           description="A few of the projects behind the numbers — problem, solution, and what I learned."
         />
         <Button href="/projects" variant="ghost" icon={<ArrowRight size={16} />} className="hidden sm:inline-flex">
