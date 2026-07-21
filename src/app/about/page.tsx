@@ -22,7 +22,7 @@ const values = [
   {
     icon: HeartHandshake,
     title: "My job is to support the team, not just the tech",
-    body: "Every metric on this site — MTTR, CSAT, throughput — is a team result, not a solo one. My role as a leader is to remove friction, coach with purpose, and challenge people to keep growing without ever leaving them to struggle alone.",
+    body: "Every metric on this site—MTTR, CSAT, throughput—reflects a team effort, not an individual achievement. I believe a manager&apos;s job is to remove friction, coach with purpose, and create an environment where every team member can do their best work.",
   },
   {
     icon: Compass,
