@@ -128,7 +128,7 @@ export default function HomelabPage() {
               <Bot size={16} /> AI Ops
             </div>
             <h2 className="mt-2 font-display text-xl font-semibold text-ink-900 dark:text-paper-100">
-              Meet {homelab.aiOps.name}, running on {homelab.aiOps.platform}
+              Meet my {homelab.aiOps.name} Sysadmin, running on {homelab.aiOps.platform}
             </h2>
             <p className="mt-3 max-w-2xl text-ink-600 dark:text-ink-300">{homelab.aiOps.description}</p>
           </div>
