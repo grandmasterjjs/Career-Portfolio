@@ -30,6 +30,37 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "service-desk-content-studio",
+    name: "Service Desk Content Operations Studio",
+    pitch: "A Python and SQLite operating system for turning IT service desk expertise into a repeatable, measurable publishing pipeline.",
+    problem:
+      "Content ideas, drafts, artwork, publishing status, and engagement data were scattered across folders and spreadsheets. That made a leadership content program hard to operate consistently: status went stale, dates could be malformed, and lessons from published work did not reliably feed the next cycle.",
+    solution:
+      "I built a GitHub-backed Content Studio with a Streamlit dashboard and SQLite source of truth. It manages editable content records, platform status, publish dates, notes, completion state, follower snapshots, engagement checkpoints, backups, and synchronized CSV exports. I paired the app with documented writing and design standards plus Python utilities for generating post workspaces, collecting metrics, and analyzing results.",
+    benefits: [
+      "Converted an 11-post season plan into one visible operating pipeline",
+      "Kept editable SQLite state and versionable CSV snapshots synchronized",
+      "Published a complete 10-slide pilot across two social platforms using the standardized workflow",
+      "Added tested validation and backup paths instead of relying on a brittle spreadsheet",
+    ],
+    tech: ["Python", "Streamlit", "SQLite", "CSV synchronization", "Unit-tested data layer", "Git / GitHub"],
+    tags: ["Python", "Automation", "AI"],
+    architecture: [
+      "Each topic starts in a standardized workspace containing the outline, slide copy, captions, prompts, hashtags, assets, and retrospective",
+      "The Streamlit dashboard validates edits and writes content, platform, metric, and follower records to SQLite",
+      "Successful changes refresh CSV snapshots for portable analysis, recovery, and useful Git history",
+      "Publishing checkpoints and retrospectives feed performance data and lessons back into the next content cycle",
+    ],
+    lessons: [
+      "Creative work still needs operational discipline: clear states, owners, checkpoints, and a definition of done prevent good ideas from stalling.",
+      "SQLite works well for live local state, while synchronized CSV snapshots keep the data portable, inspectable, and recoverable.",
+      "Validation belongs at the point of entry; one malformed date can quietly make an otherwise polished dashboard misleading.",
+    ],
+    metric: { label: "post pipeline", value: "11" },
+    accent: "signal",
+    icon: "chart",
+  },
+  {
     slug: "ai-support-chatbot",
     name: "AI-Assisted Support Chatbot Prototype",
     pitch: "A first-line AI responder trained on real ticket history, built to catch the questions that shouldn't need a human.",

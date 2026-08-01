@@ -52,7 +52,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
               </a>
             ) : (
               <span className="inline-flex items-center gap-1.5 text-sm text-ink-400 dark:text-ink-500">
-                <Lock size={14} /> Private — built in an employer environment, details on request
+                <Lock size={14} /> Private — architecture and implementation details available on request
               </span>
             )}
             {project.metric && (
