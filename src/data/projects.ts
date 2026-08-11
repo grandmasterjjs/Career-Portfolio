@@ -30,6 +30,38 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "service-desk-operations-copilot",
+    name: "Service Desk Operations Copilot",
+    pitch: "A public-safe reconstruction of an AI-assisted Service Desk operations prototype: queue intelligence, human-approved actions, and scheduled risk checks.",
+    problem:
+      "A lean Service Desk can lose the signal inside a loud queue. Raw ticket counts do not reliably surface a user who is blocked from working, a security item that has not been acknowledged, or a new hire whose hardware request never made it through the process.",
+    solution:
+      "I rebuilt the original prototype as a public GitHub project using entirely synthetic records. The copilot brings queue triage, onboarding correlation, a grounded analyst view, scheduled readiness checks, and an approval-gated action workflow into one interface. It is deliberately designed so the assistant can identify, explain, and draft an action, while a human remains responsible for approving any write.",
+    benefits: [
+      "Makes work-stoppage, security, and onboarding risks visible ahead of ordinary queue volume",
+      "Demonstrates a clear review boundary before ticket assignment, work-note, or closure actions",
+      "Models four practical operations workflows: triage, new-hire watch, Monday readiness, and stale-ticket hygiene",
+      "Publishes the architecture and guardrails without exposing employer data, credentials, prompts, or integrations",
+    ],
+    tech: ["TypeScript", "React", "Next.js-compatible Vinext", "Synthetic data", "Rule-based triage", "Human approval gates", "GitHub"],
+    tags: ["AI", "Automation", "ServiceNow"],
+    githubUrl: "https://github.com/grandmasterjjs/service-desk-operations-copilot",
+    architecture: [
+      "A read-only data adapter supplies synthetic queue and onboarding records to the operations dashboard",
+      "Risk rules identify work stoppages, security concerns, and incomplete onboarding before the assistant drafts an explanation",
+      "The grounded analyst answers queue questions using visible records and evidence references, rather than making opaque claims",
+      "A reviewer approves a proposed action before an auditable write adapter could be enabled; destructive workflows remain dry-run only",
+    ],
+    lessons: [
+      "The better question is not whether AI can update a ticket; it is whether it can make the right risk visible early enough for a human to act.",
+      "Least privilege and approval gates are product features. They make an operations tool easier to trust, govern, and recover.",
+      "A credible public portfolio project needs an honest boundary: the design can be demonstrated without copying an employer system or publishing its data.",
+    ],
+    metric: { label: "automation workflows", value: "4" },
+    accent: "signal",
+    icon: "bot",
+  },
+  {
     slug: "service-desk-content-studio",
     name: "Service Desk Content Operations Studio",
     pitch: "A Python and SQLite operating system for turning IT service desk expertise into a repeatable, measurable publishing pipeline.",

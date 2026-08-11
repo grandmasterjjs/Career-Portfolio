@@ -1,0 +1,80 @@
+---
+title: "From Chatbot to Operations Copilot: Rebuilding a Service Desk Prototype in Public"
+description: "Why I rebuilt an AI-assisted Service Desk prototype as a safe public demo—and why human approval is the interesting part."
+date: "2026-08-11"
+tags: ["AI", "ServiceNow", "Automation", "IT Operations"]
+readingTime: "6 min read"
+---
+
+The public conversation about AI in support usually gets stuck on the chatbot. Can it answer the question? Can it deflect the ticket? Can it sound sufficiently human while doing it?
+
+Those are fine questions. They just are not the most interesting operational questions.
+
+The useful work starts when an assistant helps a Service Desk see what the queue is hiding: a user who has been unable to work for 33 hours, an unacknowledged security item, or a new hire who has an account request but no hardware request. Those are not “chatbot” problems. They are service-delivery problems.
+
+That is why I rebuilt my earlier AI-assisted Service Desk prototype as a public-safe project: [Service Desk Operations Copilot](https://github.com/grandmasterjjs/service-desk-operations-copilot). It uses only synthetic data and does not include an employer system, credentials, prompts, or production integrations. What it does include is the operational thinking behind the prototype.
+
+## Start with risk, not volume
+
+An unassigned queue can be large without being dangerous. Conversely, one ticket can matter more than the other 50 combined.
+
+The demo's triage model looks for a small set of signals:
+
+- A user is actively blocked and the ticket has no owner or follow-up.
+- A security-related issue has not been acknowledged.
+- An onboarding sequence is incomplete, such as an account request arriving without the matching hardware request.
+
+That distinction matters. A queue dashboard that reports only counts can produce a false sense of control. A useful operations view lets the team focus first on what will cause the next escalation or bad employee experience.
+
+## The assistant can propose; a person decides
+
+The original prototype was operated with a review step before it touched a ticket. I kept that principle in the public reconstruction and made it explicit in the product design.
+
+```text
+Read-only queue data
+        ↓
+Rules and AI analysis
+        ↓
+Proposed action and supporting evidence
+        ↓
+Human approval
+        ↓
+Audited ticket action
+```
+
+This is not a concession to AI being unreliable. It is a better operating model.
+
+A system that can draft a factual work note, identify the relevant queue risk, and show its evidence gives a technician or lead a faster starting point. A named reviewer still owns the judgment call, the customer impact, and the write to the system of record.
+
+For higher-risk workflows, the boundary gets even stricter. The stale-ticket workflow in the demo is dry-run only. It can identify candidates and explain why they qualify, but closing a ticket is a policy decision—not a clever automation trick.
+
+## Four automations that earn their keep
+
+The project represents four small operations workflows that can make a real difference:
+
+1. **Queue triage** identifies work-stoppage and security risk in an unassigned queue.
+2. **New-hire watch** correlates account and hardware work before a start date becomes a day-one failure.
+3. **Monday readiness** consolidates onboarding risk, queue posture, and escalation signals ahead of a team standup.
+4. **Stale-ticket policy** previews warnings and potential closure candidates without taking destructive action automatically.
+
+None of these is exotic. That is the point. High-value automation is usually found in the repetitive operational blind spots that people have learned to live with.
+
+## What I changed for a public reconstruction
+
+The original work belonged in its organization. The public project does not recreate its environment, copy its source, or publish its data. Instead, it rebuilds the architecture in a form that can be inspected safely:
+
+- All incidents, requesters, and onboarding records are synthetic.
+- The app has no live ServiceNow dependency.
+- The documented model defaults to read-only access and least-privilege service accounts.
+- Proposed ticket actions are approval-gated and auditable.
+- The repository explains the safety model and the rules behind the automation.
+
+That last part is important. I want the project to demonstrate how I think about AI adoption in operations: practical, transparent, measurable, and accountable to the people who use it.
+
+## The real takeaway
+
+The goal is not to remove humans from Service Desk work. It is to make sure humans spend their attention where it has the most leverage.
+
+If an assistant can surface the incident everyone scrolled past, correlate the onboarding gap nobody noticed, and draft the first useful action without overstepping its authority, that is a system worth building.
+
+The [repository](https://github.com/grandmasterjjs/service-desk-operations-copilot) is public, and I will keep evolving it as a portfolio example of AI-assisted service operations with guardrails.
