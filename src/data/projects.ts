@@ -32,11 +32,11 @@ export const projects: Project[] = [
   {
     slug: "service-desk-operations-copilot",
     name: "Service Desk Operations Copilot",
-    pitch: "A public-safe reconstruction of an AI-assisted Service Desk operations prototype: queue intelligence, human-approved actions, and scheduled risk checks.",
+    pitch: "An AI-assisted Service Desk operations prototype: queue intelligence, human-approved actions, and scheduled risk checks.",
     problem:
       "A lean Service Desk can lose the signal inside a loud queue. Raw ticket counts do not reliably surface a user who is blocked from working, a security item that has not been acknowledged, or a new hire whose hardware request never made it through the process.",
     solution:
-      "I rebuilt the original prototype as a public GitHub project using entirely synthetic records. The copilot brings queue triage, onboarding correlation, a grounded analyst view, scheduled readiness checks, and an approval-gated action workflow into one interface. It is deliberately designed so the assistant can identify, explain, and draft an action, while a human remains responsible for approving any write.",
+      "To produce this for GitHub, I built it as a public project using entirely synthetic records. The copilot brings queue triage, onboarding correlation, a grounded analyst view, scheduled readiness checks, and an approval-gated action workflow into one interface. It is deliberately designed so the assistant can identify, explain, and draft an action, while a human remains responsible for approving any write.",
     benefits: [
       "Makes work-stoppage, security, and onboarding risks visible ahead of ordinary queue volume",
       "Demonstrates a clear review boundary before ticket assignment, work-note, or closure actions",
