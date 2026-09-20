@@ -5,7 +5,7 @@ import { getAllPostSlugs } from "@/lib/mdx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = profile.site;
-  const staticRoutes = ["", "/about", "/projects", "/blog", "/resume", "/skills", "/homelab", "/contact"].map((route) => ({
+  const staticRoutes = ["", "/about", "/projects", "/blog", "/resume", "/skills", "/homelab", "/contact", "/cheat-sheets/Code-Navigation-Interactive.html"].map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date(),
   }));

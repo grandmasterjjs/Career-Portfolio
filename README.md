@@ -40,6 +40,15 @@ The hero section (`src/components/home/Hero.tsx`) currently renders a styled SVG
 
 The Homelab page uses sanitized example VLAN ranges, hostnames, tailnet names, and reverse-proxy labels. The goal is to show the architecture and decision-making without publishing real network coordinates or internal system names.
 
+## Public cheat sheets
+
+The code-navigation guide is served directly from `public/cheat-sheets/`:
+
+- `/cheat-sheets/Code-Navigation-Interactive.html` — self-contained interactive guide; fonts and the printable poster are embedded, so a saved copy works offline.
+- `/cheat-sheets/Code-Navigation-Cheat-Sheet.pdf` — one-page 11 × 17-inch Tabloid poster.
+
+Keep both files in sync when revising the guide, and update `src/app/sitemap.ts` when adding another public guide. The companion article and offline ZIP are on [the homelab wiki](https://wiki.grandmasterj.com/en/VisualStudio/symbols-definitions-references). Deploy through the existing `develop` preview, then fast-forward `main` after verification.
+
 ## Local development
 
 ```bash
