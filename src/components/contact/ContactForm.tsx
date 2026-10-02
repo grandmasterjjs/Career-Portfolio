@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useContactAnalytics } from "@/components/analytics/AnalyticsProvider";
 import { Send } from "lucide-react";
 
 type FormState = {
@@ -13,30 +14,43 @@ type FormState = {
 type SubmitState = "idle" | "sending" | "sent" | "error";
 
 export function ContactForm() {
+  const contactSent = useContactAnalytics();
+  const sending = useRef(false);
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "", company: "" });
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (sending.current) return;
+    sending.current = true;
     setSubmitState("sending");
     setError("");
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    if (!response.ok) {
-      const data = (await response.json().catch(() => null)) as { error?: string } | null;
-      setError(data?.error || "Message failed to send. Use the email link on this page instead.");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await response.json().catch(() => null)) as { error?: string; ok?: boolean; id?: string } | null;
+      if (!response.ok || data?.ok !== true) {
+        setError(data?.error || "Message failed to send. Use the email link on this page instead.");
+        setSubmitState("error");
+        return;
+      }
+      // Honeypot responses intentionally look successful but have no provider ID.
+      // The analytics boundary checks the ID and never transmits it or form values.
+      try { contactSent(data); }
+      catch { /* Analytics failures cannot change a successful contact submission. */ }
+      setForm({ name: "", email: "", message: "", company: "" });
+      setSubmitState("sent");
+    } catch {
+      setError("Message failed to send. Use the email link on this page instead.");
       setSubmitState("error");
-      return;
+    } finally {
+      sending.current = false;
     }
-
-    setForm({ name: "", email: "", message: "", company: "" });
-    setSubmitState("sent");
   }
 
   return (
