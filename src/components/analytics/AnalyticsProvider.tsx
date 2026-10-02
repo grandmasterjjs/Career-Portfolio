@@ -19,7 +19,7 @@ export function useContactAnalytics() {
 
 export function AnalyticsSettings() {
   const { openSettings } = useContext(AnalyticsContext);
-  return <button type="button" onClick={openSettings} className="underline underline-offset-4 hover:text-ember-500">Analytics preferences</button>;
+  return <button type="button" onClick={openSettings} className="underline underline-offset-4 hover:text-ember-500">Google Analytics preferences</button>;
 }
 
 function readChoice() {
@@ -112,18 +112,26 @@ export function AnalyticsProvider({ config, children }: { config: AnalyticsConfi
     }}>
       {children}
       {show && (
-        <section aria-label="Analytics preferences" className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-2xl rounded-2xl border border-ink-300 bg-paper p-5 text-ink-900 shadow-xl dark:border-ink-600 dark:bg-ink-900 dark:text-paper-100 sm:p-6">
-          <h2 className="font-display text-lg font-semibold">Optional site analytics</h2>
-          <p className="mt-2 text-sm leading-relaxed">
-            With your permission, Google Analytics uses cookies to measure visits, pages viewed,
-            and successful contact-form submissions. Your name, email, and message are never sent to analytics.
-            You can change your choice here anytime. <Link href="/privacy" className="underline underline-offset-4">Privacy details</Link>
+        <section aria-label="Google Analytics preferences" className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-2xl rounded-2xl border border-ink-300 bg-paper p-5 text-ink-900 shadow-xl dark:border-ink-600 dark:bg-ink-900 dark:text-paper-100 sm:p-6">
+          <h2 className="font-display text-lg font-semibold">Optional Google Analytics</h2>
+          {enabled ? (
+            <p className="mt-2 text-sm leading-relaxed">
+              With your permission, Google Analytics uses cookies to measure visits, pages viewed,
+              and provider-accepted contact submissions. Your name, email, and message are never sent to it.
+              You can change your Google Analytics choice here anytime.
+            </p>
+          ) : (
+            <p className="mt-2 text-sm leading-relaxed">Google Analytics is disabled on this site environment. No Google Analytics tag is loaded.</p>
+          )}
+          <p className="mt-3 text-sm leading-relaxed">
+            The production site uses separate cookieless Vercel pageview counts. These Google Analytics
+            preferences do not control that baseline. Both respect your browser&apos;s Global Privacy Control
+            or Do Not Track signal. <Link href="/privacy" className="underline underline-offset-4">Privacy details</Link>
           </p>
-          {!enabled && <p className="mt-3 text-sm">Analytics is not enabled on this site environment.</p>}
-          {privacySignal && <p className="mt-3 text-sm">Your browser&apos;s privacy signal is respected. Analytics remains off.</p>}
+          {privacySignal && <p className="mt-3 text-sm">Your browser&apos;s privacy signal is respected. Analytics collection remains off.</p>}
           <div className="mt-4 flex flex-wrap gap-3">
-            <button type="button" onClick={() => choose("denied")} className="rounded-full border border-ink-400 px-5 py-2 text-sm font-medium hover:border-ember-500">Decline analytics</button>
-            {enabled && !privacySignal && <button type="button" onClick={() => choose("granted")} className="rounded-full border border-ink-400 px-5 py-2 text-sm font-medium hover:border-ember-500">Accept analytics</button>}
+            {enabled && <button type="button" onClick={() => choose("denied")} className="rounded-full border border-ink-400 px-5 py-2 text-sm font-medium hover:border-ember-500">Decline Google Analytics</button>}
+            {enabled && !privacySignal && <button type="button" onClick={() => choose("granted")} className="rounded-full border border-ink-400 px-5 py-2 text-sm font-medium hover:border-ember-500">Accept Google Analytics</button>}
             {(choice || !enabled || privacySignal) && <button type="button" onClick={() => setOpen(false)} className="rounded-full px-4 py-2 text-sm underline underline-offset-4">Close</button>}
           </div>
         </section>

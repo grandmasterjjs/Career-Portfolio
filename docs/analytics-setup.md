@@ -1,4 +1,6 @@
-# Free, consent-first Google Analytics 4
+# Optional, consent-first Google Analytics 4
+
+**Current rollout:** Google Analytics remains disabled. The active baseline is [cookieless Vercel pageviews](vercel-analytics-setup.md). This guide is retained for a future explicitly enabled Google integration; its consent is not removed.
 
 This integration is disabled until configured. It uses a standard GA4 property and web stream; no paid services, advertising features, Google Tag Manager, Measurement Protocol credentials, or new runtime dependencies are needed.
 

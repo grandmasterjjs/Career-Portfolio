@@ -36,6 +36,49 @@ export function publicPage(pathname: string, pages: AnalyticsPage[]): AnalyticsP
   return pages.find((page) => page.path === path);
 }
 
+export type VercelAnalyticsConfig = Pick<AnalyticsConfig, "enabled" | "production" | "pages">;
+export type VercelAnalyticsContext = {
+  hostname: string;
+  protocol: string;
+  pathname: string;
+  privacySignal: boolean;
+};
+
+export function isVercelAnalyticsAllowed(config: VercelAnalyticsConfig, context: VercelAnalyticsContext) {
+  return config.enabled && config.production && context.protocol === "https:" &&
+    HOSTS.has(context.hostname.toLowerCase()) && !context.privacySignal &&
+    !!publicPage(context.pathname, config.pages);
+}
+
+/** One filter per pathname navigation; the SDK itself owns pageview emission. */
+export function createVercelPageviewFilter(
+  config: VercelAnalyticsConfig,
+  readContext: () => VercelAnalyticsContext,
+  visitPath: string,
+) {
+  const visit = publicPage(visitPath, config.pages);
+  let lastUrl: string | null = null;
+  return (event: { type: "pageview" | "event"; url: string }): { type: "pageview"; url: string } | null => {
+    try {
+      const context = readContext();
+      if (event.type !== "pageview" || !isVercelAnalyticsAllowed(config, context)) {
+        lastUrl = null;
+        return null;
+      }
+      const url = new URL(event.url);
+      const page = publicPage(url.pathname, config.pages);
+      const current = publicPage(context.pathname, config.pages);
+      if (!page || page.path !== current?.path || page.path !== visit?.path || url.hostname !== context.hostname ||
+        url.protocol !== "https:" || url.username || url.password || url.port) return null;
+      const sanitized = `https://${context.hostname}${page.path}`;
+      if (lastUrl === sanitized) return null; // Includes repeated SDK effects in Strict Mode.
+      lastUrl = sanitized;
+      // The SDK hook does not expose referrer/device/geo fields. Don't claim to redact them.
+      return { type: "pageview", url: sanitized };
+    } catch { return null; } // Malformed data/privacy-access errors fail closed.
+  };
+}
+
 export function hasProviderMessageId(data: unknown): boolean {
   if (!data || typeof data !== "object") return false;
   const response = data as { ok?: unknown; id?: unknown };

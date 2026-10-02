@@ -6,6 +6,7 @@ import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { profile } from "@/data/profile";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { VercelPageViews } from "@/components/analytics/VercelPageViews";
 import { projects } from "@/data/projects";
 import { getAllPostSlugs } from "@/lib/mdx";
 
@@ -73,6 +74,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main className="flex-1">{children}</main>
               <Footer />
             </div>
+            <VercelPageViews config={{
+              enabled: process.env.NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED === "true",
+              production: analyticsConfig.production,
+              pages: analyticsConfig.pages,
+            }} />
           </AnalyticsProvider>
         </ThemeProvider>
       </body>

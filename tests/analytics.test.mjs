@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { CONSENT_MAX_AGE_MS, parseConsent, isConfigured, publicPage, hasProviderMessageId, createAnalytics, browserAnalyticsPort } from '../src/lib/analytics.ts';
+import { CONSENT_MAX_AGE_MS, parseConsent, isConfigured, publicPage, hasProviderMessageId, createAnalytics, browserAnalyticsPort, createVercelPageviewFilter, isVercelAnalyticsAllowed } from '../src/lib/analytics.ts';
 
 const config = { enabled: true, measurementId: 'G-TEST12345', production: true, pages: [
   { path: '/', title: 'Home' }, { path: '/about', title: 'About' }, { path: '/contact', title: 'Contact' },
@@ -186,4 +186,69 @@ test('a throwing tag initialization never escapes to React and fails closed', as
   h.tracker.update('/', h.consent); await h.load();
   assert.doesNotThrow(() => h.tracker.update('/contact', h.consent));
   assert.equal(h.disabled.at(-1), true);
+});
+
+const baseline = { enabled: true, production: true, pages: config.pages };
+const baselineContext = { hostname: 'grandmasterj.com', protocol: 'https:', pathname: '/contact', privacySignal: false };
+
+test('Vercel baseline requires production, opt-in configuration, approved HTTPS hostname and public path', () => {
+  assert.equal(isVercelAnalyticsAllowed(baseline, baselineContext), true);
+  for (const context of [
+    { hostname: 'beta.grandmasterj.com' }, { hostname: 'localhost' }, { hostname: 'career.vercel.app' },
+    { protocol: 'http:' }, { pathname: '/studio' }, { pathname: '/admin/secret' }, { pathname: '/unknown' }, { privacySignal: true },
+  ]) assert.equal(isVercelAnalyticsAllowed(baseline, { ...baselineContext, ...context }), false);
+  assert.equal(isVercelAnalyticsAllowed({ ...baseline, production: false }, baselineContext), false);
+  assert.equal(isVercelAnalyticsAllowed({ ...baseline, enabled: false }, baselineContext), false);
+});
+
+test('Vercel baseline emits only canonical URL/type and strips query/hash and arbitrary extra data', () => {
+  const filter = createVercelPageviewFilter(baseline, () => baselineContext, '/contact');
+  const result = filter({ type: 'pageview', url: 'https://grandmasterj.com/contact?email=private@example.test#secret', email: 'private@example.test', route: '/[private-query-key]' });
+  assert.deepEqual(result, { type: 'pageview', url: 'https://grandmasterj.com/contact' });
+});
+
+test('Vercel baseline rejects every custom event, including contact-form events', () => {
+  const filter = createVercelPageviewFilter(baseline, () => baselineContext, '/contact');
+  assert.equal(filter({ type: 'event', url: 'https://grandmasterj.com/contact' }), null);
+});
+
+test('Vercel baseline rejects malformed, off-origin, credentialed, private and stale URLs', () => {
+  for (const url of [
+    'bad', 'https://evil.test/contact', 'http://grandmasterj.com/contact',
+    'https://private:secret@grandmasterj.com/contact', 'https://grandmasterj.com:444/contact',
+    'https://grandmasterj.com/studio', 'https://grandmasterj.com/about',
+  ]) {
+    const filter = createVercelPageviewFilter(baseline, () => baselineContext, '/contact');
+    assert.equal(filter({ type: 'pageview', url }), null);
+  }
+});
+
+test('Vercel baseline deduplicates initial/repeated/query-only views within one pathname visit', () => {
+  const filter = createVercelPageviewFilter(baseline, () => baselineContext, '/contact');
+  assert.ok(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact?a=1' }));
+  assert.equal(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact?a=2#other' }), null);
+  assert.equal(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact' }), null);
+});
+
+test('fresh pathname visits, including back/forward, each permit one Vercel view', () => {
+  const paths = ['/', '/contact', '/', '/contact'];
+  const views = paths.map(path => {
+    const filter = createVercelPageviewFilter(baseline, () => ({ ...baselineContext, pathname: path }), path);
+    return filter({ type: 'pageview', url: 'https://grandmasterj.com' + path });
+  });
+  assert.deepEqual(views.map(view => new URL(view.url).pathname), paths);
+});
+
+test('loaded Vercel hook reads live privacy signals and blocks private-route transitions', () => {
+  let current = { ...baselineContext };
+  const filter = createVercelPageviewFilter(baseline, () => current, '/contact');
+  current.privacySignal = true;
+  assert.equal(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact' }), null);
+  current = { ...baselineContext, pathname: '/studio' };
+  assert.equal(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact' }), null);
+});
+
+test('Vercel filter rejects inaccessible privacy state without breaking the site', () => {
+  const filter = createVercelPageviewFilter(baseline, () => { throw new Error('Privacy access blocked'); }, '/contact');
+  assert.equal(filter({ type: 'pageview', url: 'https://grandmasterj.com/contact' }), null);
 });
