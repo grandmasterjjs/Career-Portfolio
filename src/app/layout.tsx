@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Navbar } from "@/components/nav/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { profile } from "@/data/profile";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { projects } from "@/data/projects";
+import { getAllPostSlugs } from "@/lib/mdx";
 
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -48,15 +51,29 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const analyticsConfig = {
+    enabled: process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true",
+    measurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "",
+    production: process.env.NODE_ENV === "production" &&
+      (process.env.VERCEL_ENV || process.env.ANALYTICS_DEPLOYMENT_ENV) === "production",
+    pages: [
+      ...["/", "/about", "/projects", "/blog", "/resume", "/skills", "/homelab", "/contact", "/privacy"]
+        .map((path) => ({ path, title: path === "/" ? "Home" : path.slice(1) })),
+      ...projects.map((project) => ({ path: `/projects/${project.slug}`, title: project.name })),
+      ...getAllPostSlugs().map((slug) => ({ path: `/blog/${slug}`, title: "Blog article" })),
+    ],
+  };
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${body.variable} ${display.variable} ${mono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <div className="relative flex min-h-screen flex-col bg-paper dark:bg-ink">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          <AnalyticsProvider config={analyticsConfig}>
+            <div className="relative flex min-h-screen flex-col bg-paper dark:bg-ink">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+          </AnalyticsProvider>
         </ThemeProvider>
       </body>
     </html>

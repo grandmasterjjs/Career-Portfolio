@@ -68,6 +68,12 @@ The contact form posts to `src/app/api/contact/route.ts` and sends mail through 
 | `RESEND_FROM_EMAIL` | Verified sender, for example `J.J. Smiley <contact@grandmasterj.com>` |
 | `CONTACT_EMAIL_TO` | Destination inbox; defaults to `src/data/profile.ts` `profile.email` if omitted |
 
+## Optional analytics
+
+Consent-first, free GA4 support is **off by default**. See [the complete setup and verification checklist](docs/analytics-setup.md) before enabling it. It measures consenting visits/pageviews and successful provider-accepted contact submissions without form contents. Configure one shared `NEXT_PUBLIC_GA_MEASUREMENT_ID` for both public career domains and set `NEXT_PUBLIC_ANALYTICS_ENABLED=true` only in Production after disabling GA4 Enhanced Measurement and user-provided data collection. Visitors can change their choice through the footer's Analytics preferences button; `/privacy` explains the data and controls.
+
+Run `npm run lint`, `npm run typecheck`, `npm run test:analytics` (Node 22.18+), and `npm run build` before release. No new runtime dependencies are needed.
+
 ## Deploying to Vercel (recommended)
 
 1. Push this project to a GitHub repository.

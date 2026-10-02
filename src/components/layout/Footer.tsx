@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AnalyticsSettings } from "@/components/analytics/AnalyticsProvider";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { Container } from "./Container";
@@ -57,7 +58,11 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col-reverse gap-4 border-t border-ink-200/60 dark:border-ink-800/60 pt-6 text-xs text-ink-400 dark:text-ink-500 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span>
-          <span className="font-mono">Columbus, OH</span>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/privacy" className="underline underline-offset-4 hover:text-ember-500">Privacy</Link>
+            <AnalyticsSettings />
+            <span className="font-mono">Columbus, OH</span>
+          </div>
         </div>
       </Container>
     </footer>

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test:analytics": "node --experimental-strip-types --test tests/analytics.test.mjs"
   },
   "dependencies": {
     "@sanity/client": "^7.6.0",
