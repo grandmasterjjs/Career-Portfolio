@@ -30,6 +30,37 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "karmak-client-rollout",
+    name: "Karmak Client Rollout & Access Reliability",
+    pitch: "Leading a tested, phased move to the local Karmak client to reduce recurring access interruptions and help users adopt a new workflow.",
+    problem:
+      "At W.W. Williams in 2026, recurring Karmak login and connection issues generated multiple support calls per week. Karmak Fusion is a dealer-management and ERP system for heavy-duty truck and engine businesses. Users accessed it through Remote Desktop, where brief interruptions could leave sessions stuck and require support to restore access. The original shared remote setup had been chosen partly to contain licensing costs, so evaluating a different approach meant understanding both the business constraints and the technical risks.",
+    solution:
+      "I led the investigation, bringing together Systems, internal Karmak experts, and vendor support to evaluate installing the Karmak client locally. I coordinated a pilot with power users and worked with Systems to monitor the network impact. When testing showed that network load was not becoming a major problem, we expanded deployment gradually. I used PDQ to deploy the local client, coordinated the transition with managers and users, and provided an instruction guide and training on the new workflow. My role covered the work from investigation through rollout and adoption, with input and support from the teams involved.",
+    benefits: [
+      "In my recollection, related login and connection support calls fell from multiple per week to nearly zero after the rollout; this is a qualitative observation, not an audited metric",
+      "Tested the local-client approach with power users and monitored network impact with Systems before expanding deployment",
+      "Used PDQ and a phased rollout to make deployment manageable and incorporate feedback along the way",
+      "Helped managers and users adopt the new workflow through an instruction guide and training",
+    ],
+    tech: ["Karmak Fusion", "Remote Desktop", "PDQ", "Network monitoring", "User documentation and training"],
+    tags: ["Automation"],
+    architecture: [
+      "Investigate recurring access interruptions with Systems, internal Karmak experts, and vendor support",
+      "Evaluate the local client against the business constraints behind the existing remote setup",
+      "Pilot with power users while Systems monitors network impact and the team gathers feedback",
+      "Expand deployment gradually using PDQ, coordinating the transition with managers and users",
+      "Support adoption with an instruction guide and training, and watch for recurring access calls",
+    ],
+    lessons: [
+      "Understanding why a setup was chosen helps the team evaluate alternatives that fit both the business and the users.",
+      "A pilot turns a reliability idea into something the team can assess. Network monitoring and power-user feedback helped guide the rollout.",
+      "Ownership includes adoption: coordinating the teams, documenting the new workflow, and training users mattered as much as deploying the client.",
+    ],
+    accent: "ember",
+    icon: "terminal",
+  },
+  {
     slug: "service-desk-operations-copilot",
     name: "Service Desk Operations Copilot",
     pitch: "An AI-assisted Service Desk operations prototype: queue intelligence, human-approved actions, and scheduled risk checks.",
