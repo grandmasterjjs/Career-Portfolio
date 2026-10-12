@@ -63,8 +63,8 @@ export const milestones: Milestone[] = [
   },
   {
     year: "2026",
-    title: "Built an AI-assisted support chatbot",
-    body: "Trained a chatbot prototype on real ticket history and knowledge base content to handle the questions that shouldn't need a human, freeing the team for the ones that do.",
+    title: "Built an AI-assisted support system",
+    body: "Trained a system prototype on real ticket history and knowledge base content to handle the questions that shouldn't need a human, freeing the team for the ones that do.",
     kind: "career",
   },
 ];

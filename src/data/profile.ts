@@ -16,7 +16,7 @@ export const profile = {
     since: "Nov 2022",
   },
   summary:
-    "IT Service Desk leader with 25+ years building and transforming support operations for organizations of 300–1,500 users. I deliver measurable gains in resolution time, first-contact resolution, and SLA consistency — usually while running below designed headcount — through process redesign, PowerShell automation, arly adoption of AI-assisted support tooling, most importantly: empowering teams and lifting them up. Hands-on experience deploying chatbot prototypes, enterprise AI tools, and ITSM optimization across ServiceNow, KACE, and Cherwell. I build technicians into teams that outperform their staffing numbers.",
+    "IT Service Desk leader with 25+ years building and transforming support operations for organizations of 300–1,500 users. I deliver measurable gains in resolution time, first-contact resolution, and SLA consistency — usually while running below designed headcount — through process redesign, PowerShell automation, arly adoption of AI-assisted support tooling, most importantly: empowering teams and lifting them up. Hands-on experience deploying system prototypes, enterprise AI tools, and ITSM optimization across ServiceNow, KACE, and Cherwell. I build technicians into teams that outperform their staffing numbers.",
   quickStats: [
     { label: "Years in IT", value: "25+" },
     { label: "Users Supported", value: "1,500+" },

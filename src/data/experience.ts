@@ -32,7 +32,7 @@ export const experience: ExperienceEntry[] = [
       "Cut average MTTR by ~20% over 12 months (from ~16 hours to ~12 hours).",
       "Reduced repeat incidents by 15–20% through structured ticket trend analysis and targeted automation.",
       "Architected a PowerShell automation suite covering Active Directory reporting, bulk user account lifecycle management, and Microsoft 365 license provisioning.",
-      "Built and deployed an AI-assisted support chatbot prototype using historical ticket data, knowledge base content, and pattern analysis.",
+      "Built and deployed an AI-assisted support system prototype using historical ticket data, knowledge base content, and pattern analysis.",
       "Trained the Service Desk team on enterprise AI tools (Claude Enterprise, code assistants) for troubleshooting, documentation, and ticket summarization.",
     ],
     metrics: [

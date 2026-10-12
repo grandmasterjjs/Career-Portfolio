@@ -93,13 +93,13 @@ export const projects: Project[] = [
     icon: "chart",
   },
   {
-    slug: "ai-support-chatbot",
-    name: "AI-Assisted Support Chatbot Prototype",
+    slug: "ai-support-system",
+    name: "AI-Assisted Support System Prototype",
     pitch: "A first-line AI responder trained on real ticket history, built to catch the questions that shouldn't need a human.",
     problem:
       "A 3-person Service Desk supporting ~1,500 users was drowning in repetitive, common-pattern tickets — password resets, access requests, known-issue troubleshooting — while running at roughly 75% of designed headcount. Every hour spent on a question that had already been answered a hundred times was an hour not spent on the tickets that actually needed a human.",
     solution:
-      "I built a chatbot prototype trained on historical ticket data, existing knowledge base articles, and recurring-issue patterns mined from the ITSM system. It handles common requests automatically and around the clock, and surfaces emerging issue clusters back to the team before they escalate.",
+      "I built a system prototype trained on historical ticket data, existing knowledge base articles, and recurring-issue patterns mined from the ITSM system. It handles common requests automatically and around the clock, and surfaces emerging issue clusters back to the team before they escalate.",
     benefits: [
       "24/7 automated coverage for the most common request types",
       "Meaningfully reduced administrative load on a 3-person team",
@@ -110,12 +110,12 @@ export const projects: Project[] = [
     architecture: [
       "Historical tickets + KB articles ingested and categorized",
       "Pattern analysis surfaces the highest-frequency, lowest-complexity request types",
-      "Chatbot handles matched requests directly; ambiguous requests route to a live technician",
+      "System handles matched requests directly; ambiguous requests route to a live technician",
       "Unresolved or novel patterns feed back into trend analysis for proactive fixes",
     ],
     lessons: [
       "The highest-leverage automation isn't the flashiest ticket — it's the one that repeats the most.",
-      "A chatbot is only as good as the knowledge base underneath it; cleaning up KB content was half the project.",
+      "A system is only as good as the knowledge base underneath it; cleaning up KB content was half the project.",
       "Transparency with the team mattered — this was framed as taking work off their plate, not replacing them, which is exactly what happened.",
     ],
     metric: { label: "Coverage", value: "24/7" },
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     name: "PowerShell Administration & Automation Suite",
     pitch: "A library of scripts that turned Active Directory and M365 admin from a full-time chore into a scheduled task.",
     problem:
-      "High-volume administrative work — AD reporting, bulk account lifecycle changes, license provisioning — was eating time a 3-person team didn't have to spare.",
+      "High-volume administrative work — AD reporting, bulk account lifecycle changes, license provisioning — was eating time my 3-person team didn't have to spare.",
     solution:
       "I architected and deployed a suite of custom PowerShell scripts covering Active Directory reporting, bulk user account lifecycle management, and Microsoft 365 license provisioning, replacing manual, click-through admin work with repeatable, scheduled automation.",
     benefits: [
