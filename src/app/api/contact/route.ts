@@ -97,5 +97,8 @@ export async function POST(request: Request) {
 
   const data = (await resendResponse.json().catch(() => null)) as { id?: string } | null;
 
-  return NextResponse.json({ ok: true, id: data?.id });
+  if (typeof data?.id !== "string" || !data.id.trim()) {
+    return NextResponse.json({ error: "Message delivery could not be confirmed." }, { status: 502 });
+  }
+  return NextResponse.json({ ok: true, id: data.id });
 }

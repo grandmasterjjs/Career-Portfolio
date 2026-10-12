@@ -68,6 +68,14 @@ The contact form posts to `src/app/api/contact/route.ts` and sends mail through 
 | `RESEND_FROM_EMAIL` | Verified sender, for example `J.J. Smiley <contact@grandmasterj.com>` |
 | `CONTACT_EMAIL_TO` | Destination inbox; defaults to `src/data/profile.ts` `profile.email` if omitted |
 
+## Privacy-focused analytics
+
+The production rollout uses **cookieless Vercel Web Analytics** for aggregate visits and public pageviews, including `/contact`. It strips query/hash values from pageview URLs, uses allowlisted public routes, honors DNT/GPC, and excludes local/preview/studio traffic. No custom events or form contents are sent. Vercel also processes referrer, device/browser, approximate location, and a request-derived visitor hash that expires after 24 hours; `/privacy` explains the scope.
+
+See [Vercel baseline setup and verification](docs/vercel-analytics-setup.md). Set `NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED=true` only in Production and keep `NEXT_PUBLIC_ANALYTICS_ENABLED=false` for this rollout. Optional, consent-first GA4 remains available but disabled; its separate [setup guide](docs/analytics-setup.md) is for future activation. Linktree is unaffected.
+
+Run `npm run lint`, `npm run typecheck`, `npm run test:analytics` (Node 22.18+), and `npm run build` before release.
+
 ## Deploying to Vercel (recommended)
 
 1. Push this project to a GitHub repository.
