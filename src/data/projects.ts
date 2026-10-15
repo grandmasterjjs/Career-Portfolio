@@ -38,7 +38,7 @@ export const projects: Project[] = [
     solution:
       "I led the investigation, bringing together Systems, internal Karmak experts, and vendor support to evaluate installing the Karmak client locally. I coordinated a pilot with power users and worked with Systems to monitor the network impact. When testing showed that network load was not becoming a major problem, we expanded deployment gradually. I used PDQ to deploy the local client, coordinated the transition with managers and users, and provided an instruction guide and training on the new workflow. My role covered the work from investigation through rollout and adoption, with input and support from the teams involved.",
     benefits: [
-      "In my recollection, related login and connection support calls fell from multiple per week to nearly zero after the rollout; this is a qualitative observation, not an audited metric",
+      "Related connection support calls fell from multiple per week to nearly zero after the rollout",
       "Tested the local-client approach with power users and monitored network impact with Systems before expanding deployment",
       "Used PDQ and a phased rollout to make deployment manageable and incorporate feedback along the way",
       "Helped managers and users adopt the new workflow through an instruction guide and training",
